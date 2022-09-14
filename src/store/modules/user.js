@@ -4,6 +4,7 @@ import { setItem, getItem } from '@/utils/storage';
 import { TOKEN } from '@/constant';
 import router from '@/router';
 import { removeAllItem } from '../../utils/storage';
+import { setTimeStamp } from '@/utils/auth';
 
 export default {
   namespaced: true,
@@ -36,6 +37,8 @@ export default {
         })
           .then((data) => {
             this.commit('user/setToken', data.token);
+            // 保存登录时间
+            setTimeStamp();
             resolve();
           })
           .catch((err) => {
