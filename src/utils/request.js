@@ -13,7 +13,7 @@ service.interceptors.request.use(
   (config) => {
     // 在这个位置需要统一的去注入token
     if (store.getters.token) {
-      if (isCheckTimeout) {
+      if (isCheckTimeout()) {
         // 退出系统
         store.dispatch('user/logout');
         return Promise.reject(new Error('token 失效'));

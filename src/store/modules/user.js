@@ -1,9 +1,8 @@
 import { login, getUserInfo } from '@/api/sys';
 import md5 from 'js-md5';
-import { setItem, getItem } from '@/utils/storage';
+import { setItem, getItem, removeAllItem } from '../../utils/storage';
 import { TOKEN } from '@/constant';
 import router from '@/router';
-import { removeAllItem } from '../../utils/storage';
 import { setTimeStamp } from '@/utils/auth';
 
 export default {
