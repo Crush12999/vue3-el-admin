@@ -2,6 +2,8 @@ import { login, getUserInfo } from '@/api/sys';
 import md5 from 'js-md5';
 import { setItem, getItem } from '@/utils/storage';
 import { TOKEN } from '@/constant';
+import router from '@/router';
+import { removeAllItem } from '../../utils/storage';
 
 export default {
   namespaced: true,
@@ -49,6 +51,15 @@ export default {
       const res = await getUserInfo();
       this.commit('user/setUserInfo', res);
       return res;
+    },
+    /**
+     * 退出登录
+     */
+    logout() {
+      this.commit('user/setToken', '');
+      this.commit('user/setUserInfo', {});
+      removeAllItem();
+      router.push('/login');
     },
   },
 };
