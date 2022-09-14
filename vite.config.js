@@ -45,7 +45,8 @@ export default ({ mode }) => {
         '/api': {
           // 用于开发环境下的转发请求
           // 更多请参考：https://vitejs.dev/config/#server-proxy
-          // target: 'http://127.0.0.1:3000/',
+          target:
+            'https://www.fastmock.site/mock/fddbdf46578e29939645f1eb21d63bc4/',
           changeOrigin: true,
         },
       },

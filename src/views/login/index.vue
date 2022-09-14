@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginRules">
+    <el-form
+      ref="loginFromRef"
+      class="login-form"
+      :model="loginForm"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -25,9 +30,10 @@
           v-model="loginForm.password"
           placeholder="请输入密码"
           name="password"
+          :type="passwordType"
         />
-        <span class="show-pwd">
-          <svg-icon icon="eye"></svg-icon>
+        <span class="show-pwd" @click="onChangePwdType">
+          <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
 
@@ -35,6 +41,8 @@
         type="primary"
         size="large"
         style="width: 100%; margin-bottom: 30px"
+        :loading="loading"
+        @click="handleLogin"
         >登录
       </el-button>
     </el-form>
@@ -44,6 +52,9 @@
 <script setup>
 import { ref } from 'vue';
 import { validatePassword } from './rules';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
 
 // 数据源
 const loginForm = ref({
@@ -67,6 +78,42 @@ const loginRules = ref({
     },
   ],
 });
+
+// 处理密码框文本显示状态
+const passwordType = ref('password');
+const onChangePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text';
+  } else {
+    passwordType.value = 'password';
+  }
+};
+
+// 登录动作处理
+const loading = ref(false);
+const loginFromRef = ref(null);
+const store = useStore();
+const router = useRouter();
+const handleLogin = () => {
+  loginFromRef.value.validate((valid, message) => {
+    if (!valid) {
+      ElMessage.error(Object.values(message)[0][0].message);
+      return;
+    }
+
+    loading.value = true;
+    store
+      .dispatch('user/login', loginForm.value)
+      .then(() => {
+        loading.value = false;
+        router.push('/');
+      })
+      .catch((err) => {
+        console.log(err);
+        loading.value = false;
+      });
+  });
+};
 </script>
 
 <style lang="scss" scoped>
