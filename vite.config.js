@@ -2,7 +2,7 @@ import { loadEnv } from 'vite';
 import createVuePlugin from '@vitejs/plugin-vue';
 // import vue from "@vitejs/plugin-vue";
 import { svgBuilder } from './src/plugins/svgBuilder';
-import path from 'path';
+import path from 'path-browserify';
 
 const CWD = process.cwd();
 
@@ -17,6 +17,7 @@ export default ({ mode }) => {
     base: VITE_BASE_URL,
     resolve: {
       alias: {
+        path: 'path-browserify',
         '~': path.resolve(__dirname, './'),
         // 相对路径别名配置，使用 @ 代替 src
         '@': path.resolve(__dirname, './src'),
