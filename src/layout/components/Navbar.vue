@@ -1,5 +1,6 @@
 <template>
   <div class="navbar">
+    <hamburger class="hamburger-container" />
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -30,7 +31,7 @@
 </template>
 
 <script setup>
-import {} from 'vue';
+import Hamburger from '@/components/Hamburger/index.vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -65,6 +66,19 @@ const logout = () => {
           margin-right: 12px;
         }
       }
+    }
+  }
+
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    // hover 动画
+    transition: background 0.5s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
     }
   }
 }

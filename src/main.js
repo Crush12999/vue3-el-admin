@@ -7,6 +7,9 @@ import 'element-plus/dist/index.css';
 // 导入全局样式
 import './style/index.scss';
 
+// 注册所有 element-plus 图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue';
+
 // 导入 svgIcon
 import SvgIcon from './components/SvgIcon/index.vue';
 
@@ -14,6 +17,9 @@ import SvgIcon from './components/SvgIcon/index.vue';
 import './permission';
 
 const app = createApp(App);
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component);
+}
 app.component('SvgIcon', SvgIcon);
 app.use(ElementPlus).use(router).use(vuex);
 app.mount('#app');

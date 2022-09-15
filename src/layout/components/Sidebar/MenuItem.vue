@@ -1,9 +1,15 @@
 <template>
-  <i v-if="icon.includes('el-icon')" class="sub-el-icon" :class="icon"></i>
+  <el-icon
+    v-if="icon.includes('el-icon')"
+    class="sub-el-icon"
+    :size="size"
+    :color="color"
+  >
+    <component :is="icon.split('-')[2]"></component>
+  </el-icon>
   <svg-icon v-else :icon="icon"></svg-icon>
   <span>{{ title }}</span>
 </template>
-
 <script setup>
 defineProps({
   title: {
@@ -14,7 +20,19 @@ defineProps({
     type: String,
     required: true,
   },
+  size: {
+    type: String,
+    default: '',
+  },
+  color: {
+    type: String,
+    default: '',
+  },
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-icon {
+  justify-content: start;
+}
+</style>

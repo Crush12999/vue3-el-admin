@@ -6,6 +6,7 @@
     :active-text-color="$store.getters.cssVar.menuActiveText"
     :unique-opened="true"
     :default-active="activeMenu"
+    :collapse="!$store.getters.sidebarOpened"
     router
   >
     <!-- 子集 menu 菜单 -->
