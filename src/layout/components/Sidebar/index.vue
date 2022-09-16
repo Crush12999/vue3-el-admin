@@ -6,9 +6,7 @@
         src="http://cdn.aqua.sharesweets.top/icon-1.jpg"
         :size="logoHeight"
       />
-      <h1 v-if="$store.getters.sidebarOpened" class="logo-title">
-        vue3-el-admin
-      </h1>
+      <h1 v-if="$store.getters.sidebarOpened" class="logo-title">vue3-admin</h1>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>

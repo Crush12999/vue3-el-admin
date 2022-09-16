@@ -8,9 +8,11 @@
     <component :is="icon.split('-')[2]"></component>
   </el-icon>
   <svg-icon v-else :icon="icon"></svg-icon>
-  <span>{{ title }}</span>
+  <span>{{ generateTitle(title) }}</span>
 </template>
 <script setup>
+import { generateTitle } from '@/utils/i18n';
+
 defineProps({
   title: {
     type: String,
