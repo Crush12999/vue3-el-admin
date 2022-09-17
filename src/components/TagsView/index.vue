@@ -12,11 +12,13 @@
       :to="{ path: tag.fullPath }"
     >
       {{ tag.title }}
-      <i
+      <el-icon
         v-show="!isActive(tag)"
         class="el-icon-close"
         @click.prevent.stop="onCloseClick(index)"
-      />
+      >
+        <CloseBold />
+      </el-icon>
     </router-link>
   </div>
 </template>
@@ -88,10 +90,10 @@ const onCloseClick = (index) => {
 
     // close 按钮
     .el-icon-close {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       line-height: 10px;
-      vertical-align: 2px;
+      vertical-align: text-top;
       border-radius: 50%;
       text-align: center;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
