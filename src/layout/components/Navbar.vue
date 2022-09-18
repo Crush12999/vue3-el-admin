@@ -1,8 +1,9 @@
 <template>
   <div class="navbar">
     <hamburger class="hamburger-container" />
-    <breadcrumb class="breadcrumb-container" />
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
+      <guide class="right-menu-item hover-effect" />
       <!-- <theme-picker class="right-menu-item hover-effect"></theme-picker> -->
       <screenfull class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
@@ -39,6 +40,7 @@ import LangSelect from '@/components/LangSelect/index.vue';
 import Hamburger from '@/components/Hamburger/index.vue';
 import Breadcrumb from '@/components/Breadcrumb/index.vue';
 import Screenfull from '@/components/Screenfull/index.vue';
+import Guide from '@/components/Guide/index.vue';
 // import ThemePicker from '@/components/ThemePicker/index.vue';
 import { useStore } from 'vuex';
 

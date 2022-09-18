@@ -1,0 +1,6 @@
+// Driver.js 高亮图标不显示的样式修改，用 outline 模拟
+div#driver-highlighted-element-stage,
+div#driver-page-overlay {
+  background: transparent !important;
+  outline: 5000px solid rgba(0, 0, 0, 0.75);
+}
