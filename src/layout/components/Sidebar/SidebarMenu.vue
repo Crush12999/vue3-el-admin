@@ -49,6 +49,15 @@ const activeMenu = computed(() => {
   margin: 5px 15px;
   height: 50px;
 
+  // 处理文字溢出
+  & > span {
+    display: block;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   &.is-active {
     background-color: #293444 !important;
   }
@@ -68,6 +77,14 @@ const activeMenu = computed(() => {
 
 .el-menu :deep(.el-sub-menu > .el-sub-menu__title) {
   margin: 0 15px;
+  // 处理文字溢出
+  & > span {
+    display: block;
+    width: calc(100% - 42px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 // 子菜单高亮时，使其父菜单也高亮
