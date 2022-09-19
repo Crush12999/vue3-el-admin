@@ -14,9 +14,12 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import SvgIcon from './components/SvgIcon/index.vue';
 // 导入权限控制模块
 import './permission';
+// filter
+import installFilter from '@/filters';
 
 const app = createApp(App);
 installElementPlus(app);
+installFilter(app);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }

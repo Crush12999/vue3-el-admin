@@ -22,7 +22,7 @@ export default {
     profile: 'Profile',
     user: 'user',
     excelImport: 'ExcelImport',
-    userManage: 'EmployeeManage',
+    userManage: 'UserManage',
     userInfo: 'UserInfo',
     roleList: 'RoleList',
     permissionList: 'PermissionList',
